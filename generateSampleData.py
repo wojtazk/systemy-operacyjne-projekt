@@ -10,10 +10,10 @@ SAMPLE_DATA_DIR = 'simulation_sample_data'
 CPU_OUTPUT_FILE = SAMPLE_DATA_DIR + '/' + 'cpu_scheduling_sample_data.txt'
 
 
-def generate_cpu_scheduling_sample_data():
+def generate_cpu_scheduling_sample_data() -> None:
     sample_data = []
     for i in range(NUM_OF_SAMPLES):
-        arrival_time = int((uuid4().int % MAX_ARRIVAL_TIME) + 1)  # arrivat_time in [1, NUM_OF_SAMPLES]
+        arrival_time = int((uuid4().int % MAX_ARRIVAL_TIME) + 1)  # arrival_time in [1, NUM_OF_SAMPLES]
         burst_time = int((uuid4().int % MAX_BURST_TIME) + 1)  # burst_time in [1, MAX_BURST_TIME]
         sample_data.append([arrival_time, burst_time])
 

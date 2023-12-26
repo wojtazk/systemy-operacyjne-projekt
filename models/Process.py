@@ -63,7 +63,7 @@ class Process:
 
     def calculate_turn_around_time(self):
         if not (self._completion_time and self.arrival_time):
-            raise ValueError("Can't calculate turn around, completion time or arrival time is invalid")
+            raise ValueError("Can't calculate turn around time, completion time or arrival time is invalid")
 
         self._turn_around_time = self._completion_time - self._arrival_time
 
@@ -79,7 +79,7 @@ class Process:
 
     def calculate_waiting_time(self):
         if not (self._turn_around_time and self._burst_time):
-            raise ValueError("Can't calculate waiting time, turn around time of burst time is invalid")
+            raise ValueError("Can't calculate waiting time, turn around time or burst time is invalid")
         self._waiting_time = self._turn_around_time - self._burst_time
 
 # test

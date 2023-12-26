@@ -1,4 +1,5 @@
 from uuid import uuid4
+from helpers import write_data_to_file
 
 
 def generate_cpu_scheduling_sample_data(num_of_samples: int, max_arrival_time: int, max_burst_time: int,
@@ -12,12 +13,4 @@ def generate_cpu_scheduling_sample_data(num_of_samples: int, max_arrival_time: i
     # sort data based on arrival time
     sample_data.sort(key=lambda x: x[0])
 
-    _write_data_to_file(sample_data, output_file)
-
-
-def _write_data_to_file(data: list, filename: str) -> None:
-    """Writes data from an array to a file"""
-    with open(filename, 'w') as file:
-        for sample in data:
-            new_line = ';'.join(str(x) for x in sample) + '\n'
-            file.write(new_line)
+    write_data_to_file(sample_data, output_file)

@@ -21,7 +21,8 @@ def simulate_fcfs(processes: list[Process]) -> list:
         process.calculate_turn_around_time()
         process.calculate_waiting_time()
 
-        tmp = process.get_properties_as_list()[3:]  # [completion_time, turn_around_time, waiting_time]
+        tmp = process.get_properties_as_list()
+        tmp = tmp[:2] + tmp[3:]  # [arrival_time, burst_time, completion_time, turn_around_time, waiting_time]
         simulation_results.append(tmp)
 
     return simulation_results

@@ -16,11 +16,12 @@ def simulate_fcfs(processes: list[Process]) -> list:
         process.completion_time = cpu_clock_after_task_execution
         cpu_clock = cpu_clock_after_task_execution
 
+        # process.remaining_burst_time = 0  # this is obsolete
+
         process.calculate_turn_around_time()
         process.calculate_waiting_time()
 
-        # Process.get_properties_as_list()->[arrival_time, burst_time, completion_time, turn_around_time, waiting_time]
-        tmp = process.get_properties_as_list()[2:]  # [completion_time, turn_around_time, waiting_time]
+        tmp = process.get_properties_as_list()[3:]  # [completion_time, turn_around_time, waiting_time]
         simulation_results.append(tmp)
 
     return simulation_results

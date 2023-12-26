@@ -5,6 +5,7 @@ class Process:
 
         self._arrival_time: int = arrival_time
         self._burst_time: int = burst_time
+        self._remaining_burst_time: int = burst_time
 
         self._completion_time: int | None = None
         self._turn_around_time: int | None = None
@@ -16,6 +17,7 @@ class Process:
         return [
             self._arrival_time,
             self._burst_time,
+            self._remaining_burst_time,
             self._completion_time,
             self._turn_around_time,
             self._waiting_time
@@ -28,6 +30,16 @@ class Process:
     @property
     def burst_time(self):
         return self._burst_time
+
+    @property
+    def remaining_burst_time(self):
+        return self._remaining_burst_time
+
+    @remaining_burst_time.setter
+    def remaining_burst_time(self, value: int):
+        if value < 0:
+            raise ValueError('Remaining burst time is less than 0')
+        self._remaining_burst_time = value
 
     @property
     def completion_time(self):

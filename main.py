@@ -36,14 +36,16 @@ CPU_ROUND_ROBIN_RESULTS_FILE = (
 # CPU scheduling
 
 # generate test data for CPU scheduling algorithms
-# FIXME: uncomment to generate new cpu scheduling sample data
 # generate_cpu_scheduling_sample_data(NUM_OF_SAMPLES, MAX_ARRIVAL_TIME, MAX_BURST_TIME, CPU_SAMPLE_FILE)
 
+# load processes data from file
 cpu_scheduling_processes = load_cpu_scheduling_sample_data(CPU_SAMPLE_FILE)
 
+# simulate FCFS and write results to file
 fcfs_simulation_data: list = simulate_fcfs(cpu_scheduling_processes)
 write_data_to_file(fcfs_simulation_data, CPU_FCFS_RESULTS_FILE)
 
+# simulate Round-Robin and write results to file
 round_robin_simulation_data: list = simulate_round_robin(cpu_scheduling_processes, CPU_TIME_SLICE)
 write_data_to_file(round_robin_simulation_data, CPU_ROUND_ROBIN_RESULTS_FILE)
 ############################################################################

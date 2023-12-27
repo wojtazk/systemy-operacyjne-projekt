@@ -26,7 +26,9 @@ SIMULATION_RESULTS_DIR = 'simulation_results'
 CPU_SAMPLE_FILE = SIMULATION_SAMPLE_DATA_DIR + '/' + 'cpu_scheduling_sample_data.txt'
 
 CPU_FCFS_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'FCFS_simulation_results.txt'
-CPU_ROUND_ROBIN_RESULTS_FILE_PREFIX = SIMULATION_RESULTS_DIR + '/' + 'Round-Robin_simulation_results_time_slice_'
+CPU_ROUND_ROBIN_RESULTS_FILE = (
+        SIMULATION_RESULTS_DIR + '/' + 'Round-Robin_simulation_results_time_slice_' + str(CPU_TIME_SLICE) + '.txt'
+)
 ############################################################################
 
 
@@ -43,5 +45,5 @@ fcfs_simulation_data: list = simulate_fcfs(cpu_scheduling_processes)
 write_data_to_file(fcfs_simulation_data, CPU_FCFS_RESULTS_FILE)
 
 round_robin_simulation_data: list = simulate_round_robin(cpu_scheduling_processes, CPU_TIME_SLICE)
-write_data_to_file(round_robin_simulation_data, CPU_ROUND_ROBIN_RESULTS_FILE_PREFIX + str(CPU_TIME_SLICE) + '.txt')
+write_data_to_file(round_robin_simulation_data, CPU_ROUND_ROBIN_RESULTS_FILE)
 ############################################################################

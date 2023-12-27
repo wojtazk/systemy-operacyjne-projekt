@@ -4,6 +4,10 @@ class Page:
         self._page_faults: int | None = None
         self._page_frequency: int = 0
 
+    # override < operator (needed for my LFU implementation :))
+    def __lt__(self, other):
+        return self._page_frequency < other.page_frequency
+
     @property
     def page_num(self) -> int:
         return self._page_num

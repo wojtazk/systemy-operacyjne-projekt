@@ -9,6 +9,8 @@ from loadSampleData import load_page_replacement_sample_data
 from cpu_scheduling.FCFS import simulate_fcfs
 from cpu_scheduling.Round_Robin import simulate_round_robin
 
+from page_replacement.FIFO import simulate_fifo_page_replacement
+
 from helpers import write_data_to_file
 
 
@@ -73,4 +75,10 @@ write_data_to_file(round_robin_simulation_data, CPU_ROUND_ROBIN_RESULTS_FILE)
 
 # load page references from file
 page_reference_array = load_page_replacement_sample_data(PAGE_SAMPLE_FILE)
+
+# simulate fifo page replacement and
+fifo_simulation_data: list = (
+    simulate_fifo_page_replacement(page_reference_array, NUM_OF_PAGE_FRAMES, MAX_PAGE_REFERENCE_NUM)
+)
+write_data_to_file(fifo_simulation_data, PAGE_FIFO_RESULTS_FILE)
 ############################################################################

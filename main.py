@@ -4,10 +4,10 @@ from generateSampleData import generate_cpu_scheduling_sample_data
 from generateSampleData import generate_page_replacement_sample_data
 
 from loadSampleData import load_cpu_scheduling_sample_data
+from loadSampleData import load_page_replacement_sample_data
 
 from cpu_scheduling.FCFS import simulate_fcfs
 from cpu_scheduling.Round_Robin import simulate_round_robin
-
 
 from helpers import write_data_to_file
 
@@ -38,6 +38,9 @@ CPU_FCFS_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'FCFS_simulation_results.
 CPU_ROUND_ROBIN_RESULTS_FILE = (
         SIMULATION_RESULTS_DIR + '/' + 'Round-Robin_simulation_results_time_slice_' + str(CPU_TIME_SLICE) + '.txt'
 )
+
+PAGE_FIFO_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'FIFO_simulation_results.txt'
+PAGE_LFU_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'LFU_simulation_results.txt'
 ############################################################################
 
 
@@ -67,4 +70,7 @@ write_data_to_file(round_robin_simulation_data, CPU_ROUND_ROBIN_RESULTS_FILE)
 # generate page replacement sample data
 # FIXME: uncomment to generate new page replacement sample data
 # generate_page_replacement_sample_data(NUM_OF_SAMPLES, MAX_PAGE_REFERENCE_NUM, PAGE_SAMPLE_FILE)
+
+# load page references from file
+page_reference_array = load_page_replacement_sample_data(PAGE_SAMPLE_FILE)
 ############################################################################

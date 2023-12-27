@@ -1,4 +1,4 @@
-def write_data_to_file(data: list[list[int]], filename: str) -> None:
+def write_data_to_file(data: list, filename: str) -> None:
     """Writes data from an array to a file"""
     with open(filename, 'w') as file:
         for sample in data:

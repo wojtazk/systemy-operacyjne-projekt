@@ -48,7 +48,7 @@ class Process:
     @completion_time.setter
     def completion_time(self, value: int):
         if value < 1:
-            raise ValueError("Completion time cannot be less than 1")
+            raise ValueError('Completion time cannot be less than 1')
         self._completion_time = value
 
     @property
@@ -58,7 +58,7 @@ class Process:
     @turn_around_time.setter
     def turn_around_time(self, value: int):
         if value < 1:
-            raise ValueError("Turn around time cannot be less than 1")
+            raise ValueError('Turn around time cannot be less than 1')
         self._turn_around_time = value
 
     def calculate_turn_around_time(self):
@@ -74,7 +74,7 @@ class Process:
     @waiting_time.setter
     def waiting_time(self, value: int):
         if value < 1:
-            raise ValueError("Waiting time cannot be less than 1")
+            raise ValueError('Waiting time cannot be less than 1')
         self._waiting_time = value
 
     def calculate_waiting_time(self):

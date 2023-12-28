@@ -36,6 +36,7 @@ def simulate_lfu_page_replacement(
             page.page_faults += 1
 
     page_faults = [[page.page_faults] for page in pages if page.page_faults is not None]
-    print(f'LFU total page faults: {sum([page.page_faults for page in pages if page.page_faults is not None])}')
+    # print(f'LFU total page faults: {sum([x[0] for x in page_faults])}')
+    # print(f'LFU avg page faults: {sum([x[0] for x in page_faults]) / len(page_faults)}')
 
     return page_faults

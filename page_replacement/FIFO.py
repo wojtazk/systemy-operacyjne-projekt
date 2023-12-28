@@ -35,6 +35,7 @@ def simulate_fifo_page_replacement(
             oldest_page_index = 0
 
     page_faults = [[page.page_faults] for page in pages if page.page_faults is not None]
-    print(f'FIFO total page faults: {sum([page.page_faults for page in pages if page.page_faults is not None])}')
+    # print(f'FIFO total page faults: {sum([x[0] for x in page_faults])}')
+    # print(f'FIFO avg page faults: {sum([x[0] for x in page_faults]) / len(page_faults)}')
 
     return page_faults

@@ -29,21 +29,29 @@ CPU_TIME_SLICE = 1000
 
 # page replacement
 NUM_OF_PAGE_FRAMES = 1000  # number of pages that can fit into the memory
+# NUM_OF_PAGE_FRAMES = 2000
 MAX_PAGE_REFERENCE_NUM = 10_000
 
-SIMULATION_SAMPLE_DATA_DIR = 'simulation_sample_data'
-SIMULATION_RESULTS_DIR = 'simulation_results'
 
-CPU_SAMPLE_FILE = SIMULATION_SAMPLE_DATA_DIR + '/' + 'cpu_scheduling_sample_data.txt'
-PAGE_SAMPLE_FILE = SIMULATION_SAMPLE_DATA_DIR + '/' + 'page_replacement_sample_data.txt'
+SAMPLE_DATA_DIR = 'simulation_sample_data'
+RESULTS_DIR = 'simulation_results'
 
-CPU_FCFS_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'FCFS_simulation_results.txt'
-CPU_ROUND_ROBIN_RESULTS_FILE = (
-        SIMULATION_RESULTS_DIR + '/' + 'Round-Robin_simulation_results_time_slice_' + str(CPU_TIME_SLICE) + '.txt'
+CPU_SAMPLE_FILE = f'{SAMPLE_DATA_DIR}/cpu_scheduling_sample_data.txt'
+PAGE_SAMPLE_FILE = (
+    f'{SAMPLE_DATA_DIR}/page_replacement_sample_data.txt'
 )
 
-PAGE_FIFO_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'FIFO_simulation_results.txt'
-PAGE_LFU_RESULTS_FILE = SIMULATION_RESULTS_DIR + '/' + 'LFU_simulation_results.txt'
+CPU_FCFS_RESULTS_FILE = f'{RESULTS_DIR}/FCFS_simulation_results.txt'
+CPU_ROUND_ROBIN_RESULTS_FILE = (
+    f'{RESULTS_DIR}/Round-Robin_simulation_results_time_slice_{str(CPU_TIME_SLICE)}.txt'
+)
+
+PAGE_FIFO_RESULTS_FILE = (
+    f'{RESULTS_DIR}/FIFO_simulation_results_page_frames_{str(NUM_OF_PAGE_FRAMES)}.txt'
+)
+PAGE_LFU_RESULTS_FILE = (
+    f'{RESULTS_DIR}/LFU_simulation_results_page_frames_{str(NUM_OF_PAGE_FRAMES)}.txt'
+)
 ############################################################################
 
 
@@ -88,5 +96,4 @@ lfu_simulation_data: list = (
     simulate_lfu_page_replacement(page_reference_array, NUM_OF_PAGE_FRAMES, MAX_PAGE_REFERENCE_NUM)
 )
 write_data_to_file(lfu_simulation_data, PAGE_LFU_RESULTS_FILE)
-# TODO: generate different sample data to showcase the advantages of LFU
 ############################################################################

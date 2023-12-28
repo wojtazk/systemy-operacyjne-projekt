@@ -26,6 +26,8 @@ def simulate_lfu_page_replacement(
         # if all the available memory is taken
         # get the index of the least frequently used page
         lfu_page_index = min(range(len(page_frames_memory)), key=page_frames_memory.__getitem__)
+
+        # page_frames_memory[lfu_page_index].page_frequency = 0  # when removing page from memory -> reset its frequency
         page_frames_memory[lfu_page_index] = page
         page.page_frequency += 1
         if page.page_faults is None:

@@ -30,7 +30,7 @@ def simulate_fifo_page_replacement(
             page.page_faults += 1
         oldest_page_index += 1
 
-        # if oldest_page_index is larger than page_frames_memory size -> make it start from the beginning again
+        # if oldest_page_index is larger than page frames memory size -> make it start from the beginning again
         if oldest_page_index == num_of_page_frames:
             oldest_page_index = 0
 

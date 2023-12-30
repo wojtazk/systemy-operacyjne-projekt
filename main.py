@@ -30,6 +30,8 @@ CPU_TIME_SLICE = 1000
 # page replacement
 NUM_OF_PAGE_FRAMES = 1000  # number of pages that can fit into the memory
 # NUM_OF_PAGE_FRAMES = 2000
+# NUM_OF_PAGE_FRAMES = 5000
+# NUM_OF_PAGE_FRAMES = 10_000
 MAX_PAGE_REFERENCE_NUM = 10_000
 
 

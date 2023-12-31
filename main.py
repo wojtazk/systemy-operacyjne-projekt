@@ -14,6 +14,7 @@ from page_replacement.LFU import simulate_lfu_page_replacement
 
 from helpers import write_data_to_file
 
+from datetime import datetime
 
 ############################################################################
 # config
@@ -28,10 +29,10 @@ CPU_TIME_SLICE = 1000
 # CPU_TIME_SLICE = 4000  # basically degrade Round-Robin to FCFS
 
 # page replacement
-NUM_OF_PAGE_FRAMES = 1000  # number of pages that can fit into the memory
-# NUM_OF_PAGE_FRAMES = 2000
-# NUM_OF_PAGE_FRAMES = 5000
-# NUM_OF_PAGE_FRAMES = 10_000
+PAGE_MEMORY_CAPACITY = 1000  # number of pages that can fit into the memory
+# PAGE_MEMORY_CAPACITY = 2000
+# PAGE_MEMORY_CAPACITY = 5000
+# PAGE_MEMORY_CAPACITY = 10_000
 MAX_PAGE_REFERENCE_NUM = 10_000
 
 
@@ -49,16 +50,18 @@ CPU_ROUND_ROBIN_RESULTS_FILE = (
 )
 
 PAGE_FIFO_RESULTS_FILE = (
-    f'{RESULTS_DIR}/FIFO_simulation_results_page_frames_{str(NUM_OF_PAGE_FRAMES)}.txt'
+    f'{RESULTS_DIR}/FIFO_simulation_results_page_frames_{str(PAGE_MEMORY_CAPACITY)}.txt'
 )
 PAGE_LFU_RESULTS_FILE = (
-    f'{RESULTS_DIR}/LFU_simulation_results_page_frames_{str(NUM_OF_PAGE_FRAMES)}.txt'
+    f'{RESULTS_DIR}/LFU_simulation_results_page_frames_{str(PAGE_MEMORY_CAPACITY)}.txt'
 )
 ############################################################################
 
 
 ############################################################################
 # CPU scheduling
+# get current time
+cpu_sim_start = datetime.now()
 
 # generate test data for CPU scheduling algorithms
 # FIXME: uncomment to generate new cpu sample data
@@ -74,11 +77,16 @@ write_data_to_file(fcfs_simulation_data, CPU_FCFS_RESULTS_FILE)
 # simulate Round-Robin and write results to file
 round_robin_simulation_data: list = simulate_round_robin(cpu_scheduling_processes, CPU_TIME_SLICE)
 write_data_to_file(round_robin_simulation_data, CPU_ROUND_ROBIN_RESULTS_FILE)
+
+# print how much execution took
+print(f'cpu scheduling simulation took: {(datetime.now() - cpu_sim_start).total_seconds()} sec')
 ############################################################################
 
 
 ############################################################################
 # page replacement
+# get current time
+page_sim_start = datetime.now()
 
 # generate page replacement sample data
 # FIXME: uncomment to generate new page replacement sample data
@@ -89,13 +97,16 @@ page_reference_array = load_page_replacement_sample_data(PAGE_SAMPLE_FILE)
 
 # simulate fifo page replacement and write results to file
 fifo_simulation_data: list = (
-    simulate_fifo_page_replacement(page_reference_array, NUM_OF_PAGE_FRAMES, MAX_PAGE_REFERENCE_NUM)
+    simulate_fifo_page_replacement(page_reference_array, PAGE_MEMORY_CAPACITY, MAX_PAGE_REFERENCE_NUM)
 )
 write_data_to_file(fifo_simulation_data, PAGE_FIFO_RESULTS_FILE)
 
 # simulate LFU page replacement and write results to file
 lfu_simulation_data: list = (
-    simulate_lfu_page_replacement(page_reference_array, NUM_OF_PAGE_FRAMES, MAX_PAGE_REFERENCE_NUM)
+    simulate_lfu_page_replacement(page_reference_array, PAGE_MEMORY_CAPACITY, MAX_PAGE_REFERENCE_NUM)
 )
 write_data_to_file(lfu_simulation_data, PAGE_LFU_RESULTS_FILE)
+
+# print how much execution took
+print(f'page replacement simulation took: {(datetime.now() - page_sim_start).total_seconds()} sec')
 ############################################################################

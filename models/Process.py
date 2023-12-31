@@ -1,6 +1,6 @@
 class Process:
     def __init__(self, arrival_time: int, burst_time: int):
-        if arrival_time < 1 or burst_time < 1:
+        if arrival_time < 0 or burst_time < 1:
             raise ValueError('Arrival time or Burst time is invalid')
 
         self._arrival_time: int = arrival_time
@@ -62,7 +62,7 @@ class Process:
         self._turn_around_time = value
 
     def calculate_turn_around_time(self):
-        if not (self._completion_time and self.arrival_time):
+        if not self._completion_time:
             raise ValueError("Can't calculate turn around time, completion time or arrival time is invalid")
 
         self._turn_around_time = self._completion_time - self._arrival_time

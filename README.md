@@ -156,7 +156,7 @@ simulation_results_calc
 
 `Round-Robin` ma większy zarówno `Turn Around Time` jak i `Waiting Time`, co oznacza że procesy czekają dłużej na ich całkowite wykonanie niż w przypadku `FCFS`.
 
-Średni czas oczekiwania procesów w `Round-Robin` dla kwantów czasu (`Time Slice`) 10, 100, 1000 był gorszy od średniego czasu oczekiwania w `FCFS` o około 33%, dla większych kwantów czasu ta różnica maleje bardziej maleje. Nie jest to ogromna różnica biorąc pod uwagę, że jeden długi proces w `Round-Robin` nie blokuje innych procesów.
+Średni czas oczekiwania procesów w `Round-Robin` dla kwantów czasu (`Time Slice`) 10, 100, 1000 był gorszy od średniego czasu oczekiwania w `FCFS` o około 33%, dla większych kwantów czasu ta różnica maleje. Nie jest to ogromna różnica biorąc pod uwagę, że jeden długi proces w `Round-Robin` nie blokuje innych procesów.
 
 W `Round-Robin` im kwant czasu jest większy tym bardziej zaczyna on przypominać `FCFS`. W moich danych testowych czas wykonywania procesu może być równy co najwyżej 5000, co za tym idzie jeśli ustawilibyśmy w `Round-Robin` kwant czasu na 5000, wtedy wyniki byłyby identyczne z wynikami `FCFS`. A więc dla odpowiednio dużego kwanty czasu `Round-Robin` będzie zachowywał się tak samo jak `FCFS`. To zachowanie widoczne jest na obu wykresach, im większy kwant czasu tym bardziej słupki `Round-Robina` przypominają te z `FCFS`.
 
@@ -195,7 +195,7 @@ Kiedy popatrzymy na dane wynikowe, to zaobserwujemy że w `FCFS` procesy które 
 | 35           | 16         |
 
 Ciężko jest jednoznacznie określić który algorytm jest lepszy. Wybór między First Come First Serve a Round-Robin zależy od tego co jest dla nas bardziej korzystne. `FCFS` jest prosty w implementacji i ma minimalne koszty, ale może prowadzić do długiego czasu oczekiwania dla procesów, które przybywają później. Z drugiej strony, `RR` zapewnia lepsze czasy odpowiedzi dla krótkich procesów i jest wygodny w użyciu w systemach typu time-sharing. Jednak ma on wyższe koszty ze względu na potrzebę rejestrowania upływu czasu i przełączanie procesów, co może powodować pogorszenie wydajności, gdy w systemie występuje wiele procesów.
-Podsumowując, jeśli system wymaga prostego algorytmu planowania z minimalnymi kosztami, `FCFS` jest dobrym wyborem. Jednak jeśli system musi zapewnić lepsze czasy odpowiedzi dla krótkich procesów i jest zaprojektowany do time-sharingu, `RR` jest lepszym wyborem.
+Podsumowując, jeśli system wymaga prostego algorytmu planowania z minimalnymi kosztami, `FCFS` jest dobrym wyborem. Jednak jeśli system musi zapewnić lepsze czasy odpowiedzi dla krótkich procesów i jest zaprojektowany do time-sharingu to `RR` jest lepszym wyborem.
 
 ---
 
@@ -280,7 +280,7 @@ W moich danych testowych, strony które chcemy wczytać występują mniej więce
 
 Z wyników symulacji widać, że dla pamięci która mieści 1000 stron, w ok 90% przypadków strona nie była obecna w pamięci i trzeba było ją wczytać. Sytuacja zmienia się dla większej pojemności pamięci, wraz ze wzrostem pojemności pamięci spada ilość przypadków odwołań do strony której nie ma w pamięci. Jeśli pojemność pamięci jest równa lub większa niż liczba wszystkich stron to wtedy każda strona w momencie odwołania się do niej zostaje zapisana w pamięci i już tam zostanie, ponieważ nie trzeba zwalniać pamięci aby załadować nową stronę. Taka sytuacja drastycznie obniża liczbę przypadków, w których strona w momencie odwołania nie była obecna w pamięci. Dobrze ilustrują to wyniki dla obu algorytmów dla `page frames` równego 10_000, czyli pojemność pamięci jest równa maksymalnej liczbie wszystkich stron.
 
-Ciężko jest jednoznacznie określić który algorytm jest lepszy. `FIFO` jest łatwiejszy do zaimplementowania, jednak nie bierze pod uwagę częstotliwości dostępu strony lub inncyh kryteriów mogących być ważne w pewnych sytuacjach. `LFU` wymaga prowadzenia “dzienniczka” z częstością stron, co może wykorzystywać dodatkowe zasoby systemu.
+Ciężko jest jednoznacznie określić który algorytm jest lepszy. `FIFO` jest łatwiejszy do zaimplementowania, jednak nie bierze pod uwagę częstotliwości dostępu strony lub inncyh kryteriów, które mogą być istotne w pewnych sytuacjach. `LFU` wymaga prowadzenia “dzienniczka” z częstością stron, co może wykorzystywać dodatkowe zasoby systemu.
 
 Nie ma uniwersalnej odpowiedzi, który algorytm jest lepszy, wybór często wiąże się z eksperymentowaniem i analizą, aby określić odpowiedni algorytm dla konkretnego systemu.
 

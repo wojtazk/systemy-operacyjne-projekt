@@ -83,7 +83,6 @@ Mimo pewnych wad, algorytm LFU jest szeroko stosowany w systemach operacyjnych, 
 - loadSampleData.py → plik źródłowy zawierający funkcje wczytujące dane testowe z plików
 - helpers.py → plik źródłowy z funkcjami pomocniczymi
 - main.py → główny plik programu
-- sprawozdanie.pdf → sprawozdanie
 - README.md → sprawozdzanie w wersji markdown
 - .gitignore
 
@@ -163,7 +162,7 @@ W `Round-Robin` im kwant czasu jest większy tym bardziej zaczyna on przypomina�
 
 Kiedy popatrzymy na dane wynikowe, to zaobserwujemy że w `FCFS` procesy które wykonały się jako pierwsze to te które wystąpiły jako pierwsze. Natomiast w przypadku `Round-Robin` faworyzowane są procesy wykonujące się w krótkim czasie.
 
-`FCFS` (procesów które skończyły się wykonywać jako pierwsze)
+`FCFS` (10 procesów które skończyły się wykonywać jako pierwsze)
 
 | Arrival Time | Burst Time |
 | ------------ | ---------- |
